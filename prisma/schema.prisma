@@ -1,0 +1,34 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Find {
+  id        String   @id @unique @default(uuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  type      String
+  descName  String
+}
+
+model Plate {
+  id            String   @id @unique
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  rpm           String
+  hp            String
+  model         String
+  capacitor     Int
+  amp           Float
+  wireWork      Int
+  wireStart     Int
+  sequenceWork  String
+  sequenceStart String
+  description   String
+
+  @@map("plates")
+}
